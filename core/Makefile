@@ -2014,7 +2014,7 @@ ifeq ($(build_ota_package),true)
 # -----------------------------------------------------------------
 # OTA update package
 
-name := $(TARGET_PRODUCT)
+name := yaos$(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
   # Assume non-release recoveries skip signature check
@@ -2043,7 +2043,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-PA_TARGET_PACKAGE := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-$(ROM_VERSION).zip
+PA_TARGET_PACKAGE := $(PRODUCT_OUT)/$(name)-$(ROM_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
